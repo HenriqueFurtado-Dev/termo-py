@@ -37,14 +37,33 @@ def gerar_palavra():
 def adicionar_palavra():
     palavra_usuario = input("Digite uma Palavra com 5 caracteres: ")
 
-    if len(palavra_usuario) != 5:
+    while (len(palavra_usuario) != 5):
         print("--" * 20)
         print("Valor inválido, por favor tente novamente")
         palavra_usuario = input("Digite uma Palavra com 5 caracteres: ")
-    else: 
+
+    if len(palavra_usuario) == 5: 
         format_palavra_usuario = list(palavra_usuario)
+        print(format_palavra_usuario)
     
     return format_palavra_usuario
+
+def verificar_palavra():
+
+    meu_set = {"c", "l", "i", "m", "a"}
+    meu_set_2 = set(["c", "l", "u", "b", "e"])
+
+    # União
+    print("União")
+    print(meu_set | meu_set_2)
+    print(meu_set.union(meu_set_2))
+
+    # Interseção
+    print("Interseção")
+    print(meu_set & meu_set_2)
+    print(meu_set.intersection(meu_set_2))
+
+    pass
 
 def verificar_letra(format_palavra_usuario, format_palavra_gerada):
     letras_formatadas = []
@@ -66,12 +85,8 @@ def verificar_letra(format_palavra_usuario, format_palavra_gerada):
 def mostrar_letras_usadas():
     pass
 
-
-
 def main():
-    explicacao_jogo()
-    menu_jogo()
-    verificar_letra(adicionar_palavra(), gerar_palavra())
+   verificar_palavra()
 
 if __name__ == "__main__":
     main()
