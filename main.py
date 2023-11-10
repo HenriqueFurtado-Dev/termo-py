@@ -65,6 +65,9 @@ def verificar_letra(format_palavra_usuario, format_palavra_gerada):
     palavra_formatada_str = ''.join(letras_formatadas)
     print(palavra_formatada_str)
 
+    palavra_gerada = gerar_palavra()
+    
+
     while(format_palavra_usuario != format_palavra_gerada):
         adicionar_palavra()
 
