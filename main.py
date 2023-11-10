@@ -24,6 +24,7 @@ def menu_jogo():
         gerar_palavra()
     elif(escolha_menu ==2):
         print("Saiu do jogo!")
+        exit()
 
 # Seleciona uma palavra do arquivo JSON
 def gerar_palavra():
@@ -36,7 +37,6 @@ def gerar_palavra():
 
 def adicionar_palavra():
     palavra_usuario = input("Digite uma Palavra com 5 caracteres: ")
-
     while (len(palavra_usuario) != 5):
         print("--" * 20)
         print("Valor inválido, por favor tente novamente")
@@ -48,26 +48,10 @@ def adicionar_palavra():
     
     return format_palavra_usuario
 
-def verificar_palavra():
-
-    meu_set = {"c", "l", "i", "m", "a"}
-    meu_set_2 = set(["c", "l", "u", "b", "e"])
-
-    # União
-    print("União")
-    print(meu_set | meu_set_2)
-    print(meu_set.union(meu_set_2))
-
-    # Interseção
-    print("Interseção")
-    print(meu_set & meu_set_2)
-    print(meu_set.intersection(meu_set_2))
-
-    pass
-
 def verificar_letra(format_palavra_usuario, format_palavra_gerada):
     letras_formatadas = []
 
+        
     for i in range(len(format_palavra_usuario)):
         letra_usuario = format_palavra_usuario[i]
         letra_gerada = format_palavra_gerada[i]
@@ -81,12 +65,25 @@ def verificar_letra(format_palavra_usuario, format_palavra_gerada):
     palavra_formatada_str = ''.join(letras_formatadas)
     print(palavra_formatada_str)
 
+    while(format_palavra_usuario != format_palavra_gerada):
+        adicionar_palavra()
+
+def verificar_palavra():
+    if (adicionar_palavra() == gerar_palavra()):
+        print("Voce acertou a palavra!!!")
+        exit()
+
 
 def mostrar_letras_usadas():
     pass
 
+
 def main():
-   verificar_palavra()
+    explicacao_jogo()
+    menu_jogo()
+
+    verificar_letra(adicionar_palavra(), gerar_palavra())
+    
 
 if __name__ == "__main__":
     main()
